@@ -89,5 +89,6 @@ class Program {
         library.AddMediaItem(media1);
         library.PrintCatalog();
         // Console.WriteLine(library.Name);
+
     }
 }
