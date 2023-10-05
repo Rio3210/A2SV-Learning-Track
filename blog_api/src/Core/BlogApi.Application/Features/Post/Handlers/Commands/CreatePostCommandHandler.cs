@@ -22,6 +22,10 @@ namespace BlogApi.Application.Features.Post.Handlers.Commands
         
         public async Task<int> Handle(CreatePostCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreatePostDtoValidator();
+            var validationResult = await validator.ValidateAsync(request.createPostDto);
+            if (validationResult.IsValid == false)
+                throw new Exceptions.ValidationException(validationResult);
             var post = _mapper.Map<Post>(request.createPostDto);
             await _postRepository.AddAsync(post);
             return post.Id;

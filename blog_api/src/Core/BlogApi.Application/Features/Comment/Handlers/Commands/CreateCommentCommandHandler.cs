@@ -17,6 +17,10 @@ public class CreateCommentCommandHandler : IRequestHandler<CreateCommentDto, int
 
     public async Task<int> Handle(CreateCommentDto request, CancellationToken cancellationToken)
     {
+        var validator = new CreateCommentDtoValidator();
+        var validationResult = await validator.ValidateAsync(request);
+        if (validationResult.IsValid == false)
+            throw new Exceptions.ValidationException(validationResult);
         var comment = _mapper.Map<Comment>(request);
         await _commentRepository.AddAsync(comment);
         return comment.Id;
