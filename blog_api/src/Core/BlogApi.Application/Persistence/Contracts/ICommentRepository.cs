@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using BlogApi.Domain;
-
+using System.Text;
+using System.Threading.Tasks;
 namespace BlogApi.Application.Persistence.Contracts{
     public interface ICommentRepository : IGenericRepository<Comment>
     {

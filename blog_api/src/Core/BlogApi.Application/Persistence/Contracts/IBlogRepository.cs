@@ -2,6 +2,7 @@ using System;
 using BlogApi.Domain;
 using System.Collection.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BlogApi.Application.Persistence.Contracts
 {
